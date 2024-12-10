@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --primary: #00b2ca;
+        --secondary: #ff6b00;
+        --text: #333333;
+        --background: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      body {
+        line-height: 1.5;
+        color: var(--text);
+      }
+
+      /* Header & Navigation */
+      .header {
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 178, 202, 0.7)
+          ),
+          url("https://i0.wp.com/maaun.edu.ng/wp-content/uploads/2023/02/7E4A1924.jpg?fit=2232%2C1488&ssl=1");
+        background-size: cover;
+        background-position: center;
+        height: 90vh;
+        position: relative;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 4rem;
+        color: white;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 2rem;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        opacity: 1;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 800px;
+        text-align: center;
+      }
+
+      .search-container {
+        margin-bottom: 2rem;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .search-input::placeholder {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .category-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .tab {
+        padding: 0.5rem 2rem;
+        border: 1px solid white;
+        border-radius: 25px;
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .tab.active,
+      .tab:hover {
+        background: white;
+        color: var(--primary);
+      }
+
+      /* Fabulous Section */
+      .fabulous {
+        padding: 4rem;
+        text-align: left;
+      }
+
+      .fabulous h1 {
+        font-size: 8rem;
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+
+      /* Features Section */
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding: 4rem;
+      }
+
+      .feature-card {
+        position: relative;
+        padding: 2rem;
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+
+      .feature-card.orange {
+        background: var(--secondary);
+        color: white;
+      }
+
+      .feature-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      /* About Section */
+      .about {
+        padding: 4rem;
+        background: #f5f5f5;
+      }
+
+      .about h2 {
+        font-size: 8rem;
+        font-weight: 900;
+        margin-bottom: 2rem;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .play-button {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: none;
+        background: var(--secondary);
+        color: white;
+        cursor: pointer;
+        margin-top: 2rem;
+      }
+
+      .rotating-text {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        animation: rotate 10s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+      }
+
+      /* For You Section */
+      .for-you {
+        padding: 4rem;
+      }
+
+      .for-you h2 {
+        font-size: 8rem;
+        font-weight: 900;
+        margin-bottom: 2rem;
+      }
+
+      .grid-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        aspect-ratio: 1;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 70%;
+        object-fit: cover;
+      }
+
+      .gallery-item.orange {
+        background: var(--secondary);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      /* Subscribe Section */
+      .subscribe {
+        padding: 4rem;
+        text-align: center;
+        background: #f5f5f5;
+      }
+
+      .subscribe h2 {
+        font-size: 8rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+      }
+
+      .subscribe-form {
+        display: flex;
+        max-width: 500px;
+        margin: 2rem auto;
+      }
+
+      .subscribe-form input {
+        flex: 1;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 25px 0 0 25px;
+      }
+
+      .subscribe-button {
+        padding: 1rem 2rem;
+        background: var(--secondary);
+        color: white;
+        border: none;
+        border-radius: 0 25px 25px 0;
+        cursor: pointer;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--text);
+        color: white;
+        padding: 4rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .footer-section a {
+        color: white;
+        text-decoration: none;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+      }
+
+      .footer-section a:hover {
+        opacity: 1;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .features,
+        .grid-gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+
+        .fabulous h1,
+        .about h2,
+        .for-you h2,
+        .subscribe h2 {
+          font-size: 4rem;
+        }
+
+        .footer-content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+        <nav>
+            <div class="logo">CÉFA</div>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#">Events</a>
+                <a href="#">Committee</a>
+                <a href="#">Account</a>
+            </div>
+        </nav>
+        <div class="hero">
+            <div class="search-container">
+                <button type="text" value="Search events and activities..." class="search-input" style="text-align: center;" onclick='window.location.href = "https://forms.gle/UbGuYmvJTrja9FaF9"'>Join A club</button>
+            </div>
+            <div class="category-tabs">
+                <button class="tab active">Cultural</button>
+                <button class="tab">Academic</button>
+                <button class="tab">Social</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="fabulous">
+            <h1>Vibrant</h1>
+            <p>Your student experience deserves the best community support</p>
+        </section>
+
+        <section class="features">
+            <div class="feature-card orange">
+                <h3>Connect with Us</h3>
+                <img src="https://i0.wp.com/maaun.edu.ne/wp-content/uploads/2023/03/7E4A3711-scaled.jpg?fit=1920%2C600&ssl=1" alt="Student Activities" class="feature-image">
+                <p>Join our thriving community</p>
+            </div>
+            <div class="feature-card">
+                <h3>Student Life</h3>
+                <img src="https://maaun.edu.ng/wp-content/uploads/2023/02/7E4A1677.jpg"" alt="Campus Life" class="feature-image">
+                <p>Experience the best of MAAUN culture</p>
+            </div>
+            <div class="feature-card">
+                <h3>CÉFA Hub</h3>
+                <img src="https://lh5.googleusercontent.com/Qnzxq8-AR2VMaTKDWllT-cR--J2lPF-zIk5CKcVlIPwFyLUtyQnqRj-jo_jnds8f3xIJNf7Pns5yzzH--kW9ksVdT8B89uYwvQLrH3CdeADQt8OoN_nGWRLqr8Vv4IcgHw=w1413" alt="CEFA Hub" style="object-fit: contain;"class="feature-image">
+                <p>Your space for innovation and creativity</p>
+            </div>
+        </section>
+
+        <section class="about">
+            <h2>About</h2>
+            <div class="about-content">
+                <div class="text-content">
+                    <p>Where cultural excellence meets student leadership</p>
+                    <!-- <button class="play-button">
+                        <div class="rotating-text">
+                            <span>Click to play our story • Click to play our story •</span>
+                        </div>
+                        <div class="play-icon">▶</div>
+                    </button> -->
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/QiZ8C09PC98?si=Oyc4be1WMUhkAc2e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="image-content"></iframe>
+            </div>
+        </section>
+
+        <section class="for-you">
+            <h2>For You</h2>
+            <div class="grid-gallery">
+                <div class="gallery-item">
+                    <img src="https://i0.wp.com/maaun.edu.ng/wp-content/uploads/2023/07/WhatsApp-Image-2023-07-13-at-12.15.54.jpeg?fit=1280%2C856&ssl=1" alt="Cultural Events">
+                    <h3>Cultural Events</h3>
+                    <p>Celebrating our heritage</p>
+                </div>
+                <div class="gallery-item orange">
+                    <h3>Join Today</h3>
+                    <p>Be part of something special</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pixieset.com/83951218/3819d09b921d81e6edafe2aa65e0c5c8-xxlarge.jpeg">
+                    <h3>Activities</h3>
+                    <p>Engage and grow</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg" alt="Committee">
+                    <h3>Leadership</h3>
+                    <p>Meet our committee</p>
+                </div>
+                <div class="gallery-item">
+                    <img src=" https://i0.wp.com/maaun.edu.ng/wp-content/uploads/2023/02/DJI_0338.jpg?fit=2000%2C1125&ssl=1 " alt="Campus Life">
+                    <h3>Campus Life</h3>
+                    <p>Experience MAAUN</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i0.wp.com/maaun.edu.ng/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-29-at-06.40.01-2.jpeg?fit=1080%2C720&ssl=1" alt="Events">
+                    <h3>Events</h3>
+                    <p>What's happening</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="subscribe">
+            <h2>Join a Club</h2>
+            <p>Join a club to be part of CÉFA activities and events and boost yourself base on your skills</p>
+            <div class="subscribe-form">
+                <input type="email" placeholder="Enter your email">
+                <button class="subscribe-button" onclick='window.location.href = "https://forms.gle/UbGuYmvJTrja9FaF9"'>→</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>cefa@maaun.edu.ng</p>
+                <p>+234 706 177 2057</p>
+            </div>
+            <div class="footer-section">
+                <h4>Social Media</h4>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="maaun.edu.ng">MAAUN </a>
+                <a href="#">Committee</a>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <a href="#">Student Guide</a>
+                <a href="#">FAQs</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    <script>
+      // Rotating text animation
+      const rotatingText = document.querySelector(".rotating-text span");
+      if (rotatingText) {
+        const text = rotatingText.innerText;
+        rotatingText.innerHTML = text
+          .split("")
+          .map(
+            (char, i) =>
+              `<span style="transform: rotate(${i * 8.5}deg)">${char}</span>`
+          )
+          .join("");
+      }
+
+      // Tab switching functionality
+      const tabs = document.querySelectorAll(".tab");
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+        });
+      });
+
+      // Smooth scroll for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Play button animation
+      const playButton = document.querySelector(".play-button");
+      if (playButton) {
+        playButton.addEventListener("click", () => {
+          playButton.classList.add("playing");
+          setTimeout(() => {
+            playButton.classList.remove("playing");
+          }, 1000);
+        });
+      }
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Observe sections for animations
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Form submission
+      const subscribeForm = document.querySelector(".subscribe-form");
+      if (subscribeForm) {
+        subscribeForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const email = subscribeForm.querySelector("input").value;
+          if (email) {
+            alert("Thank you for subscribing!");
+            subscribeForm.reset();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
